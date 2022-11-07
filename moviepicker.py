@@ -19,7 +19,10 @@ Average_ratings['Total Ratings'] = pd.DataFrame(data.groupby('title')['rating'].
 
 movie_user = data.pivot_table(index='userId',columns='title',values= 'rating')
 
-correlations = movie_user.corrwith(movie_user['Toy Story (1995)'])
+
+text_input = st.text_input("Enter a movie name","Toy Story (1995)")
+
+correlations = movie_user.corrwith(movie_user[text_input])
 
 recommendation = pd.DataFrame(correlations,columns=['Correlation'])
 recommendation.dropna(inplace=True)
@@ -30,6 +33,5 @@ recc = recommendation[recommendation['Total Ratings']>100].sort_values('Correlat
 recc = recc.merge(movie_titles_genre,on='title', how='left')
 
 
-text_input = st.text_input("Enter a movie name","Toy Story (1995)")
 
-st.markdown(f"Tavsieler : {recc.head(10)}");
+st.markdown(f"{recc.head(10)}");
