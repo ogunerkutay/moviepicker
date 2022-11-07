@@ -1,9 +1,5 @@
 import numpy as np
 import pandas as pd
-from zipfile import ZipFile
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
 import streamlit as st
 
 st.title("Hi! Welcome to MoviePicker!")
