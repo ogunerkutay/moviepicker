@@ -31,5 +31,5 @@ recommendation = recommendation.join(Average_ratings['Total Ratings'])
 recc = recommendation[recommendation['Total Ratings']>100].sort_values('Correlation',ascending=False).reset_index()
 recc = recc.merge(movie_titles_genre,on='title', how='left')
 recc.drop('genres', axis=1, inplace=True) 
-
+recc.drop('movieId', axis=1, inplace=True) 
 st.markdown(f"{recc.head(10)}");
