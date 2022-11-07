@@ -27,11 +27,9 @@ correlations = movie_user.corrwith(movie_user[text_input])
 recommendation = pd.DataFrame(correlations,columns=['Correlation'])
 recommendation.dropna(inplace=True)
 recommendation = recommendation.join(Average_ratings['Total Ratings'])
-recommendation.head()
 
 recc = recommendation[recommendation['Total Ratings']>100].sort_values('Correlation',ascending=False).reset_index()
 recc = recc.merge(movie_titles_genre,on='title', how='left')
-
-
+recc.drop('genres', axis=1, inplace=True) 
 
 st.markdown(f"{recc.head(10)}");
