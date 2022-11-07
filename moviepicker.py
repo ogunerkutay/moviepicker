@@ -34,5 +34,4 @@ recc.drop('genres', axis=1, inplace=True)
 recc.drop('movieId', axis=1, inplace=True) 
 recc.drop('Total Ratings', axis=1, inplace=True) 
 recc.drop('Correlation', axis=1, inplace=True) 
-recc.drop('movieId', axis=1, inplace=True) 
 st.markdown(f"{recc.head(10)}");
